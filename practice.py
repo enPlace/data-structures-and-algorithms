@@ -2,7 +2,6 @@ def isBalanced(s):
     # Write your code here
     stack = []
     brackets = {"}":"{", "]":"[", ")":"("}
-
     for i in s: 
         if i in brackets.values(): 
             stack.append(i)
@@ -10,9 +9,9 @@ def isBalanced(s):
             top = stack.pop()
             if brackets[i]!=top:
                 return "NO"
-        else: 
+        else:
             return "NO"
-    return "NO" if stack else "YES"
+    return "NO" if stack else "YES" 
 
 
 
