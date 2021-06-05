@@ -16,6 +16,16 @@ class linkedList:
             currentValue.nextNode = new_node
         else: 
             self.head = new_node
+
+    def insert_first(self,value):
+        new_node = linkedListNode(value)
+        new_node.nextNode = self.head
+        self.head = new_node
+    def delete_first(self):
+        if self.head.nextNode:
+            self.head = self.head.nextNode
+        else: 
+            self.head = None
     def get_position(self, position):
         """Get an element from a particular position.
         Assume the first position is "1".
@@ -119,9 +129,14 @@ newll.printList()
 newll.deleteNode(7)
 newll.printList()
 newll.insertNode("#",1)
-print(newll.head.value)
+print("_______________")
+newll.insert_first(4)
+newll.printList()
+newll.delete_first()
+newll.printList()
 
-
+newer = linkedList()
+newer.delete_first()
 
 #_______below is the structure as written by the google/python data structures class in udacity 
 #https://classroom.udacity.com/courses/ud513/lessons/7117335401/concepts/78875247320923
@@ -142,6 +157,7 @@ class LinkedList(object):
             current.next = new_element
         else:
             self.head = new_element
+
 
     def get_position(self, position):
         counter = 1
