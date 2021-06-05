@@ -20,14 +20,15 @@ class queue:
     def delHead(self):
         if self.head: 
             self.head = self.head.nextNode
-            if self.head == None: 
-                self.tail == None
+            if self.head ==None:
+                self.tail= None
+
 
     def peek(self):
         if self.head: 
             print("The head is: ",self.head.data, " and the tail is: " ,self.tail.data)
         else:
-            print(None)
+            print(self.head, self.tail)
 
 
 
@@ -62,6 +63,11 @@ newq.delHead()
 newq.peek()
 newq.printList()
 
+print(newq.head.nextNode)
+
 newq.delHead()
 newq.peek()
 newq.printList()
+newq.peek()
+
+newq.delHead()
