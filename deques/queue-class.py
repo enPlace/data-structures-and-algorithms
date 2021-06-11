@@ -1,3 +1,8 @@
+#deque needs head, tail, and prev/next pointers for each node 
+#enque always appends
+#deque always takes the first in the list
+#peek method shows the head and tail
+#rotate methods move to the right or left 
 class New_Node:
     def __init__(self, data, prev=None, nxt=None):
         self.data = data
@@ -83,12 +88,82 @@ class Deque:
         print(lst)
 
 
-d = Deque()
-for i in range(6):
-    d.appendright(i)
 
+
+d = Deque()
+d.appendright(5)
+d.appendright(6)
+d.appendright(7)
+print(d.head.data) #5
+print(d.head.nxt.data) # 6
+print(d.tail.prev.data) # 6
+print(d.tail.data) #7
+print("__________")
+d.appendleft(4)
+print(d.head.data)#4
+print(d.head.nxt.data)#5
+print(d.head.nxt.nxt.data)#6
+print(d.tail.data)#7
+print("__________")
+old = d.popleft()
+print(old.data) #4
+print(old.next)#None
+print(d.head.data) #5
+print(d.head.nxt.data) # 6
+e = Deque()
+x = e.popleft()
+print(x)#None
+
+d.appendright(8)
+print(d.tail.data)#8
+oldtail= d.popright()
+print(oldtail.data)#8
+print(oldtail.prev)#None
+print(d.tail.data)#7
+print(d.tail.nxt)#None
+print("__________")
+d.rotateright(1)
+print(d.tail.data)#6
+print(d.head.data)#7
+print(d.head.prev)#None
+print(d.tail.nxt)#None
+print(d.tail.prev.data)#5
+print(d.head.nxt.data)#5
+e.appendright(1)
+print(e.head.data)
+print(e.tail.data)
+e.rotateright(1)
+e.rotateleft(2)
+print(e.head.data)
+print(e.tail.data)
+print("__________")
+d.printqueue() #[7, 5, 6]
+e.printqueue() #[1]
+f = Deque()
+f.printqueue() #[]
+print("__________")
+epop = e.popleft()
+fpop = f.popleft()
+print(epop.data) #1
+print(fpop) #None
+e.printqueue() #[]
+f.printqueue()#[]
+print("__________")
+e.appendright(1)
+e.printqueue() #[1]
+eright= e.popright()
+print(eright.data)#1
+e.printqueue()#[]
+f.popright()
+f.printqueue()#
+
+print("__________")
+
+d.printqueue()
+d.rotateright(1)
 d.printqueue()
 d.rotateleft(1)
+print(d.tail.nxt)
 d.printqueue()
 
-
+print("__________")

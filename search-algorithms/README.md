@@ -1,0 +1,1 @@
+Contained in this folder are search algorithms written in python. Also contained in this folder are txt files that contain the equations or proofs for determining the time efficiency of each algorithm. 
