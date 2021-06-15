@@ -1,94 +1,30 @@
-class New_Node:
-    def __init__(self, data, prev=None, nxt=None):
-        self.data = data
-        self.prev = prev
-        self.nxt = nxt
+def binary_search(arr, num):
+    first = 0
+    last = len(arr) -1
+    middle = 0
 
-class Deque: 
-    def __init__(self, head=None, tail=None):
-        self.head = head
-        self.tail = tail
-
-    def appendright(self, data):
-        newNode= New_Node(data)
-        if self.tail:
-            self.tail.nxt = newNode
-            newNode.prev = self.tail
-            self.tail = newNode
-        else:
-            self.head = newNode
-            self.tail = newNode
-    def appendleft(self, data):
-        newNode= New_Node(data)
-        if self.head: 
-            self.head.prev = newNode
-            newNode.nxt = self.head
-            self.head = newNode
-    def popleft(self):
-        oldhead = self.head
-        newhead = None 
-        if self.head and self.head != self.tail: 
-            newhead = oldhead.nxt
-            newhead.prev = None
-            self.head = newhead
-            oldhead.next = None
+    while first<=last:
+        middle = (first+last)//2
+        if arr[middle]==num: 
+            return middle
+        elif arr[middle]<num: 
+            first = middle+1
         else: 
-            self.head =None
-            self.tail =None
-        return oldhead
+            last = middle -1
+    return "Not found"
 
-    def popright(self):
-        oldtail = self.tail
-        newtail = None
-        if self.tail and self.tail!=self.head:
-            newtail = oldtail.prev
-            newtail.nxt = None
-            self.tail = newtail
-            oldtail.prev = None
-        else: 
-            self.head = None
-            self.tail = None
-        return oldtail
-    def rotateright(self, num):
-        self.tail.nxt = self.head
-        self.head.prev = self.tail
-        current = self.tail 
-        for i in range(num):
-            current = current.prev
-        self.tail = current
-        self.head = current.nxt
-        self.tail.nxt = None
-        self.head.prev = None
+arr1 = [ 1, 2, 3, 4, 7, 40 ]
+x = 4
 
-    def rotateleft(self,num):
-        self.tail.nxt = self.head
-        self.head.prev = self.tail
-        current =self.head 
-        for i in range(num):
-            current = current.nxt
-        self.head =current
-        self.tail = current.prev
-        self.head.prev = None
-        self.tail.nxt = None
+arr2 = [ 2, 3, 4, 10, 40, 45, 80 ]
+y = 2
 
-    def printqueue(self):
-        lst = []
-        current= self.head
-        if self.head:
-            if self.head != self.tail:
-                while current.nxt: 
-                    lst.append(current.data)
-                    current = current.nxt
-            lst.append(current.data)
-        print(lst)
+arr3 = [ 2, 3, 4, 10, 40 ]
+z = 40
+a=70
 
-
-d = Deque()
-for i in range(6):
-    d.appendright(i)
-
-d.printqueue()
-d.rotateleft(1)
-d.printqueue()
-
+print(binary_search(arr1,x))#3
+print(binary_search(arr2,y))#0
+print(binary_search(arr3,z))#4
+print(binary_search(arr3,a))#None
 
