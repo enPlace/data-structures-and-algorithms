@@ -4,9 +4,9 @@ def bubble_sort(arr):
         for j in range(len(arr)-1-i):
             if arr[j] >arr[j+1]:
                 arr[j], arr[j+1]=arr[j+1], arr[j]
-                print(arr)
+            print(arr)
 
 
-arr1 = [4,3,2,1]
+arr1 = [4,3,2,5,1]
 bubble_sort(arr1)
 
